@@ -25,9 +25,8 @@ pipeline{
     }
 
     post{
-        sucess{
+        success{
             echo'sucesso'
         }
-
     }
 }
