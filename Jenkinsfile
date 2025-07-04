@@ -26,7 +26,7 @@ pipeline{
             steps{
                 withCredentials([string(credentialsId: 'vercel_token', variable: 'VERCEL_TOKEN')]){
                     bat ''' npm install -g vercel
-                        vercel --prod --yes --token=%VERCEL_TOKEN% --confirm
+                        vercel --prod --yes --token=%VERCEL_TOKEN% --confirm --name project-curso
                      '''
                 }
             }
