@@ -1,6 +1,15 @@
 {
-  "version": 2,
-  "public": true,
-  "builds": [{ "src": "dist/project-curso/**/*", "use": "@vercel/static" }],
-  "routes": [{ "src": "/(.*)", "dest": "/dist/project-curso/$1" }]
+  "outputDirectory": "dist/project-curso",
+  "builds": [
+    {
+      "src": "dist/project-curso/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
 }
