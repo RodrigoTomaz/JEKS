@@ -5,28 +5,26 @@ pipeline{
         nodejs 'NodeJS_24'
     }
 
-    stages{
-        stage('Build'){
-            steps{
-                echo'Fazendo o build'
-                sh 'node -v'
+    stages {
+        stage('Instalar dependências') {
+            steps {
+                sh 'npm install'
             }
         }
-        stage('Teste'){
-            steps{
-                echo'Fazendo o Teste'
-            }
-        }
-        stage('Deploy'){
-            steps{
-                echo'Fazendo o deploy'
+
+        stage('Build') {
+            steps {
+                sh 'npm run build'
             }
         }
     }
 
-    post{
-        success{
-            echo'sucesso'
+     post {
+        success {
+            echo 'Build concluído com sucesso!'
+        }
+        failure {
+            echo 'Erro durante o build!'
         }
     }
 }
