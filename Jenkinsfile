@@ -25,9 +25,8 @@ pipeline{
         stage('Deploy para Vercel'){
             steps{
                 withCredentials([string(credentialsId: 'vercel_token', variable: 'VERCEL_TOKEN')]){
-                    bat ''' npm install -g vercel
-                        vercel --prod --yes --token=%VERCEL_TOKEN% --confirm --name project-curso
-                     '''
+                    bat 'npm install -g vercel'
+                    bat 'vercel deploy --prod --token=%VERCEL_TOKEN% --confirm --cwd=dist/project-curso'
                 }
             }
         }
