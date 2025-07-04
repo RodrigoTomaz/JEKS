@@ -7,18 +7,18 @@ pipeline{
 
     stages{
         stage('Build'){
-            step{
+            steps{
                 echo'Fazendo o build'
                 sh 'node -v'
             }
         }
         stage('Teste'){
-            step{
+            steps{
                 echo'Fazendo o Teste'
             }
         }
         stage('Deploy'){
-            step{
+            steps{
                 echo'Fazendo o deploy'
             }
         }
