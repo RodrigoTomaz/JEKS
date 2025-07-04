@@ -1,30 +1,43 @@
-pipeline {
+pipeline{
     agent any
 
-    tools {
-        nodejs 'NodeJS_24' // Certifique-se de configurar isso no Jenkins
+    tools{
+        nodejs 'NodeJS_24'
     }
 
-    stages {
-        stage('Instalar dependências') {
-            steps {
+    environment{
+        PATH = "${tool 'NodeJS_24'}/bin:${env.PATH}"
+    }
+
+    stages{
+        stage('Instalar Dependências'){
+            steps{
                 bat 'npm install'
             }
         }
 
-        stage('Build') {
-            steps {
-                bat 'npm run build'
+        stage('Build Angular'){
+            steps{
+                bat 'npx ng build --configuration production'
+            }
+        }
+
+        stage('Deploy para Vercel'){
+            steps{
+                withCredentials([string(credentialsId: 'vercel_token', variable: 'VERCEL_TOKEN')]){
+                    bat ''' npm install -g vercel
+                        vercel --prod --yes --token=%VERCEL_TOKEN% --confirm
+                     '''
+                }
             }
         }
     }
-
-    post {
-        success {
-            echo 'Build concluído com sucesso!'
+    post{
+        success{
+            echo'Deploy feito com sucesso!'
         }
-        failure {
-            echo 'Erro durante o build!'
+        failure{
+            echo'Erro ao fazer o Deploy, verifique o log!'
         }
     }
 }
