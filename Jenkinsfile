@@ -1,8 +1,8 @@
-pipeline{
+pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS_24'
+        nodejs 'NodeJS_24' // Certifique-se de configurar isso no Jenkins
     }
 
     stages {
@@ -19,7 +19,7 @@ pipeline{
         }
     }
 
-     post {
+    post {
         success {
             echo 'Build concluído com sucesso!'
         }
