@@ -1,17 +1,15 @@
 {
+  "outputDirectory": "dist/projeto_test_deploy",
   "builds": [
     {
-      "src": "angular.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist/projeto_test_deploy"
-      }
+      "src": "dist/projeto_test_deploy/**",
+      "use": "@vercel/static"
     }
   ],
-  "routes": [
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ]
 }
