@@ -1,0 +1,15 @@
+{
+  "outputDirectory": "dist/project-curso",
+  "builds": [
+    {
+      "src": "dist/project-curso/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}

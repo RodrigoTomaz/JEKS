@@ -22,14 +22,7 @@ pipeline{
             }
         }
 
-        // stage('Deploy para Vercel'){
-        //     steps{
-        //         withCredentials([string(credentialsId: 'vercel_token', variable: 'VERCEL_TOKEN')]){
-        //             bat 'npm install -g vercel'
-        //             bat 'vercel deploy --prod --yes --token=%VERCEL_TOKEN% --cwd=dist/project-curso'
-        //         }
-        //     }
-        // }
+        ;
     }
     post{
         success{
