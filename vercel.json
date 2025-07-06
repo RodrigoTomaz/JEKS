@@ -1,8 +1,8 @@
 {
-  "outputDirectory": "dist/project-curso",
+  "outputDirectory": "dist/projeto_test_deploy",
   "builds": [
     {
-      "src": "dist/project-curso/**",
+      "src": "dist/projeto_test_deploy/**",
       "use": "@vercel/static"
     }
   ],
