@@ -1,13 +1,15 @@
 pipeline{
     agent any
 
-    tools{ 
-        nodesjs 'NodeJs_24'
+    tools{
+        nodejs 'NodeJS_24'
     }
 
-    stage('build'){
-        steps{
-            echo'building'
+    stage{
+        stages('Build'){
+            steps{
+                bat 'ng install'
+            }
         }
     }
 }
